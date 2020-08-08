@@ -25,7 +25,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
       exepected_error = { 'password' => ["can't be blank"] }
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(load_body(response)).to eq(exepected_error)
+      expect(load_body_errors(response)).to eq(exepected_error)
     end
   end
 end

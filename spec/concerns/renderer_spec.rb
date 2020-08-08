@@ -58,9 +58,14 @@ RSpec.describe Renderer, type: :controller do
         'id' => resource.id,
         'name' => resource.name
       }
+      meta_fields = {
+        'resource' => 'Dummy',
+        'count' => 1
+      }
 
       expect(response.status).to eq(200)
       expect(load_body_data(response)).to include(resource_fields)
+      expect(load_body_meta(response)).to include(meta_fields)
     end
   end
 
@@ -73,7 +78,7 @@ RSpec.describe Renderer, type: :controller do
       }
 
       expect(response.status).to eq(422)
-      expect(load_body(response)).to eq(error_fields)
+      expect(load_body_errors(response)).to eq(error_fields)
     end
   end
 end
