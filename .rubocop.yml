@@ -1,0 +1,9 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+
+Metrics/MethodLength:
+  Max: 7
+  Exclude:
+    - 'bin/bundle'
