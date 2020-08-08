@@ -3,48 +3,73 @@
 require 'rails_helper'
 
 RSpec.describe Renderer, type: :controller do
+  before do
+    ActiveRecord::Base.connection.create_table :dummies, force: true do |t|
+      t.string(:name)
+
+      t.timestamps null: false
+    end
+  end
+
+  after do
+    ActiveRecord::Base.connection.drop_table(:dummies, if_exists: true)
+  end
+
+  class Dummy < ApplicationRecord
+    validates :name, presence: true
+  end
+
+  class DummySerializer < BaseSerializer
+    attributes :name
+  end
+
+  FactoryBot.define do
+    factory :dummy do
+      name { 'sample' }
+    end
+  end
+
   controller(ApplicationController) do
     include Renderer
 
     def show
-      user = User.find(params[:id])
+      user = Dummy.find(params[:id])
       render_object(user)
     end
 
     def create
-      user = User.create(user_params)
+      user = Dummy.create(dummy_params)
       render_errors(user.errors)
     end
 
     private
 
-    def user_params
-      params.require(:user).permit(:email, :password)
+    def dummy_params
+      params.require(:dummy).permit(:name)
     end
   end
 
   describe 'GET show' do
-    let(:resource) { create(:user) }
+    let(:resource) { create(:dummy, name: 'sample') }
 
     it 'renders resource with render_object method' do
       get :show, params: { id: resource.id }
       resource_fields = {
         'id' => resource.id,
-        'email' => resource.email
+        'name' => resource.name
       }
 
       expect(response.status).to eq(200)
-      expect(load_body(response)['user']).to include(resource_fields)
+      expect(load_body_data(response)).to include(resource_fields)
     end
   end
 
   describe 'POST create' do
     it 'renders resource errors with render_errors method' do
-      post :create, params: { user: { email: nil, password: nil } }
+      post :create, params: { dummy: { name: nil } }
 
       error_fields = {
-        'email' => ["can't be blank"],
-        'password' => ["can't be blank"]
+        'name' => ["can't be blank"]
       }
 
       expect(response.status).to eq(422)

@@ -7,7 +7,7 @@ module Api
         @user = User.new(user_params)
         return render_errors(@user.errors) unless @user.save
 
-        render_object(@user, :created)
+        render_object(@user, status: :created)
       end
 
       private
