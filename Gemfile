@@ -11,6 +11,7 @@ gem 'devise', '~> 4.7'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
+gem 'swagger-blocks', '~> 3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password

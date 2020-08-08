@@ -10,6 +10,10 @@ module Api
         render_object(@user, status: :created)
       end
 
+      def options
+        response.set_header('Allow', 'OPTIONS, POST')
+      end
+
       private
 
       def user_params
