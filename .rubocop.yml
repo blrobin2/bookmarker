@@ -3,6 +3,10 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   NewCops: enable
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Metrics/MethodLength:
   Max: 7
   Exclude:

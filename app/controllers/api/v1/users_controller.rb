@@ -5,9 +5,9 @@ module Api
     class UsersController < BaseController
       def create
         @user = User.new(user_params)
-        return render json: @user.errors, status: :unprocessable_entity unless @user.save
+        return render_errors(@user.errors) unless @user.save
 
-        render json: @user, status: :created
+        render_object(@user, :created)
       end
 
       private
