@@ -20,9 +20,22 @@ module Swagger
             end
           end
           response 201 do
-            key :description, 'User response'
+            key :description, 'User created'
             schema do
-              key :'$ref', :User
+              property :data do
+                key :'$ref', :User
+              end
+
+              property :meta do
+                key :'$ref', :Meta
+              end
+            end
+          end
+
+          response 422 do
+            key :description, 'Unprocessable Entity'
+            schema do
+              key :'$ref', :Error
             end
           end
         end
