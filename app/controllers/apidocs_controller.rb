@@ -25,10 +25,13 @@ class ApidocsController < ApplicationController
 
   SWAGGERED_CLASSES = [
     Swagger::Controllers::UsersController,
+    Swagger::Controllers::OauthTokenController,
     Swagger::Models::Error,
     Swagger::Models::Meta,
     Swagger::Models::User,
     Swagger::Models::UserInput,
+    Swagger::Models::OauthTokenInput,
+    Swagger::Models::OauthToken,
     self
   ].freeze
 

@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     end
   end
 
+  scope 'api/v1' do
+    use_doorkeeper do
+      skip_controllers :authorizations, :applications, :authorized_applications
+    end
+  end
+
   resources :apidocs, only: [:index]
   resources :swagger, only: [:index]
 end
