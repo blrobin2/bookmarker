@@ -12,7 +12,7 @@ gem 'doorkeeper', '~> 5.4'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rack-cors'
-gem 'rails', '~> 6.0.3', '>= 6.0.4.7'
+gem 'rails', '~> 6.0.6'
 gem 'swagger-blocks', '~> 3.0'
 
 # Use Active Storage variant
