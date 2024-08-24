@@ -23,8 +23,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 5.2'
   gem 'rspec-rails', '~> 4.0'
-  gem 'rubocop', '~> 0.85.1', require: false
-  gem 'rubocop-rspec', require: false
+  gem 'rubocop', '~> 0.86.0', require: false
+  gem 'rubocop-rspec', '>= 1.42.0', require: false
 end
 
 group :test do
