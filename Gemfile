@@ -12,7 +12,7 @@ gem 'doorkeeper', '~> 5.4'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rack-cors'
-gem 'rails', '~> 6.0.3', '>= 6.0.4.7'
+gem 'rails', '~> 7.0.0'
 gem 'swagger-blocks', '~> 3.0'
 
 # Use Active Storage variant
@@ -24,7 +24,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 5.2'
   gem 'rspec-rails', '~> 4.0'
   gem 'rubocop', '~> 0.85.1', require: false
-  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec', '>= 3.5.0', require: false
 end
 
 group :test do
