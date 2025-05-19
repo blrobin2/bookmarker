@@ -11,7 +11,7 @@ gem 'devise', '~> 4.7'
 gem 'doorkeeper', '~> 5.4'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
-gem 'rack-cors'
+gem 'rack-cors', '>= 3.0.0'
 gem 'rails', '~> 6.0.3', '>= 6.0.4.7'
 gem 'swagger-blocks', '~> 3.0'
 
